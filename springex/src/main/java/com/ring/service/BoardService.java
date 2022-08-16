@@ -3,12 +3,13 @@ package com.ring.service;
 import java.util.ArrayList;
 
 import com.ring.model.BoardVO;
+import com.ring.model.CriteriaVO;
 
 public interface BoardService {
 	//글쓰기 설계
 	public void write(BoardVO board);
 	//글 목록 리스트 설계
-	public ArrayList<BoardVO> list();
+	public ArrayList<BoardVO> list(CriteriaVO cri);
 	//글 상세 내용 보기 설계
 	public BoardVO detail(BoardVO board);
 	//글 수정 설계

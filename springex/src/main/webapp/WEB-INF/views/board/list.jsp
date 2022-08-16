@@ -22,7 +22,10 @@
 			<td>${boardlist.count}</td><td>${boardlist.id}</td>
 		</tr>
 		</c:forEach>
-		<!-- for문 끝 -->			
+		<!-- for문 끝 -->
+		<tr>
+			<td><a href="/board/write"><button>글쓰기</button></a></td>
+		</tr>			
 	</table>
 </body>
 </html>

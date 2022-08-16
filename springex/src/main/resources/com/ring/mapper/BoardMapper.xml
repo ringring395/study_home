@@ -10,7 +10,15 @@
 	</insert>
 	
 	<select id="list" resultType="com.ring.model.BoardVO">
-		select * from board;
+		select *
+		from (
+				select @rownum:=@rownum+1 rownum, board.* 
+				from board, (select @rownum:=0) as tmp
+		        order by bno desc
+		) as boardlist
+		<![CDATA[
+		where rownum > #{pageNum} and rownum <= #{amount}
+		]]>
 	</select>
 	
 	<select id="detail" resultType="com.ring.model.BoardVO">

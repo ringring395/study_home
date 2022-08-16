@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ring.model.BoardVO;
+import com.ring.model.CriteriaVO;
 import com.ring.service.BoardService;
 
 //controller역할을 부여해주자 @활용
@@ -31,9 +32,9 @@ public class BoardController {
 	}
 	//게시판 목록 리스트
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
-	public String list(Model model) {
+	public String list(Model model, CriteriaVO cri) {
 		//boardlist.jsp를 실행할때 select된 결과를 가져가라.
-		model.addAttribute("list", bs.list());
+		model.addAttribute("list", bs.list(cri));
 		//board폴더 안에 있는 boardlist.jsp 실행
 		return "board/list";
 	}

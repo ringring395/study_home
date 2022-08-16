@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ring.mapper.BoardMapper;
 import com.ring.model.BoardVO;
+import com.ring.model.CriteriaVO;
 
 @Service					
 public class BoardServiceImpl implements BoardService{
@@ -23,8 +24,8 @@ public class BoardServiceImpl implements BoardService{
 		bm.write(board);		
 	}
 	//boardservice에서 설계되어진 list추상메소드
-	public ArrayList<BoardVO> list() {
-		return bm.list();
+	public ArrayList<BoardVO> list(CriteriaVO cri) {
+		return bm.list(cri);
 	}
 	
 	public BoardVO detail(BoardVO board) {
