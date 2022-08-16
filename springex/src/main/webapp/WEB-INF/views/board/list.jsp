@@ -25,7 +25,10 @@
 		<!-- for문 끝 -->
 		<tr>
 			<td><a href="/board/write"><button>글쓰기</button></a></td>
-		</tr>			
+		</tr>
 	</table>
+			<a href="/board/list?pageNum=1&amount=10">1</a>
+			<a href="/board/list?pageNum=2&amount=10">2</a>
+			<a href="/board/list?pageNum=3&amount=10">3</a>
 </body>
 </html>
