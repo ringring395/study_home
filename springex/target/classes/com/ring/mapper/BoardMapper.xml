@@ -25,6 +25,10 @@
 		select * from board where bno=#{bno}
 	</select>
 	
+	<update id="cntup">
+		update board set count = count+1 where bno=#{bno}
+	</update>
+	
 	<update id="modify">
 		update board set title=#{title}, content=#{content} where bno=#{bno}
 	</update>
@@ -32,5 +36,9 @@
 	<delete id="delete">
 		delete from board where bno=#{bno}
 	</delete>
+	
+	<select id="total" resultType="int">
+		select count(*) from board 
+	</select>
 
 </mapper>

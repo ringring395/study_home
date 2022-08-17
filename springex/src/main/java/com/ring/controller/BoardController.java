@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ring.model.BoardVO;
 import com.ring.model.CriteriaVO;
+import com.ring.model.PageVO;
 import com.ring.service.BoardService;
 
 //controller역할을 부여해주자 @활용
@@ -33,8 +34,16 @@ public class BoardController {
 	//게시판 목록 리스트
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
 	public String list(Model model, CriteriaVO cri) {
-		//boardlist.jsp를 실행할때 select된 결과를 가져가라.
+		//boardlist.jsp를 실행할때 select된 결과를 가져와라.
+		//list.jsp의 ${list}로 연결됨
 		model.addAttribute("list", bs.list(cri));
+		//list.jsp 실행 할때 PageVO에 저장되어 있는 데이터를 가져와라.
+		//					(매개변수가 없는 기본)생성자 호출
+		//list.jsp의 ${paging}으로 연결됨
+		//model.addAttribute("paging", new PageVO(cri, 300));
+		//board(게시판) 테이블의 전체 건수를 select해서 조회해옴.
+		int total = bs.total();
+		model.addAttribute("paging", new PageVO(cri, total));
 		//board폴더 안에 있는 boardlist.jsp 실행
 		return "board/list";
 	}
@@ -44,7 +53,7 @@ public class BoardController {
 	//public String detail(int bno)
 	public String detail(BoardVO board, Model model) {
 		//bs.detail(bno);
-		bs.detail(board);	//select된 결과 도착
+		
 		model.addAttribute("detail", bs.detail(board));
 		return "board/detail";
 	}	

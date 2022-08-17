@@ -14,7 +14,7 @@ public class PageVO {
 	//board테이블의 전체 건수를 저장
 	private int total;
 	
-	//생성자
+	//생성자(매개변수가 2개인 생성자) 선언
 	public PageVO(CriteriaVO cri, int total) {
 		this.cri = cri;
 		this.total = total;
@@ -32,7 +32,7 @@ public class PageVO {
 		//							126*1.0 = 126.0 / 10
 		//									  12.6(올림) => 13
 		int realEnd = (int)(Math.ceil((total*1.0)/cri.getAmount()));
-		
+
 		// 13(realEnd) < 20(endPage) 면
 		//realEnd가 적용되게 함
 		if(realEnd < this.endPage) {

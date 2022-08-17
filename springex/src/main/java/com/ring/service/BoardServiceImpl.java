@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ring.mapper.BoardMapper;
 import com.ring.model.BoardVO;
@@ -28,7 +29,11 @@ public class BoardServiceImpl implements BoardService{
 		return bm.list(cri);
 	}
 	
+	@Transactional
 	public BoardVO detail(BoardVO board) {
+		//상세페이지 조회할 때
+		// 조회수+1 update
+		bm.cntup(board);
 		return bm.detail(board);
 	}
 	
@@ -39,6 +44,9 @@ public class BoardServiceImpl implements BoardService{
 	public void delete(BoardVO board) {
 		bm.delete(board);
 	}
-	
+	//board테이블 전체 건수 조회
+	public int total() {
+		return bm.total();
+	}
 
 }

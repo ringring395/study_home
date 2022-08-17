@@ -16,5 +16,6 @@ public interface BoardService {
 	public void modify(BoardVO board);
 	//글 삭제 설계
 	public void delete(BoardVO board);
-
+	//board테이블 전체 건수 설계
+	public int total();
 }

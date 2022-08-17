@@ -27,8 +27,23 @@
 			<td><a href="/board/write"><button>글쓰기</button></a></td>
 		</tr>
 	</table>
-			<a href="/board/list?pageNum=1&amount=10">1</a>
-			<a href="/board/list?pageNum=2&amount=10">2</a>
-			<a href="/board/list?pageNum=3&amount=10">3</a>
+
+	
+<!-- prev(이전)이 true이면 이전버튼 활성화 -->
+		<c:if test="${paging.prev}">
+			<a href="/board/list?pageNum=${paging.startPage-1}&amount=${paging.cri.amount}">이전</a>
+		</c:if>
+		
+<!-- for문 시작 : begin(1)이 end(10)될 동안 반복 -->
+		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">	
+			<a href="/board/list?pageNum=${num}&amount=${paging.cri.amount}">${num}</a>
+		</c:forEach>
+<!-- for문 끝 -->
+		
+<!-- next(다음)이 true이면 다음버튼 활성화 -->
+		<c:if test="${paging.next}">
+			<a href="/board/list?pageNum=${paging.endPage+1}&amount=${paging.cri.amount}">다음</a>
+		</c:if>
+		
 </body>
 </html>
