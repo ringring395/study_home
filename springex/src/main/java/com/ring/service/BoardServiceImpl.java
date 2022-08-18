@@ -24,7 +24,7 @@ public class BoardServiceImpl implements BoardService{
 		System.out.println("service="+board);
 		bm.write(board);		
 	}
-	//boardservice에서 설계되어진 list추상메소드
+	//BoardService에서 설계되어진 list추상메소드
 	public ArrayList<BoardVO> list(CriteriaVO cri) {
 		return bm.list(cri);
 	}
@@ -45,8 +45,8 @@ public class BoardServiceImpl implements BoardService{
 		bm.delete(board);
 	}
 	//board테이블 전체 건수 조회
-	public int total() {
-		return bm.total();
+	public int total(CriteriaVO cri) {
+		return bm.total(cri);
 	}
 
 }

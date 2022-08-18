@@ -4,6 +4,8 @@ public class CriteriaVO {
 	
 	private int pageNum;	//페이지번호
 	private int amount;		//한 페이지당 게시물 갯수
+	private String keyword;	//검색창에 입력한 키워드
+	private String type;	//키워드의 종류
 	
 	//생성자
 	public CriteriaVO() {
@@ -27,10 +29,22 @@ public class CriteriaVO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	//toString
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	@Override
 	public String toString() {
-		return "CriteriaVO [pageNum=" + pageNum + ", amount=" + amount + "]";
+		return "CriteriaVO [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", type=" + type
+				+ "]";
 	}
 	
 }

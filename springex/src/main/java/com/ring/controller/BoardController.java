@@ -42,7 +42,7 @@ public class BoardController {
 		//list.jsp의 ${paging}으로 연결됨
 		//model.addAttribute("paging", new PageVO(cri, 300));
 		//board(게시판) 테이블의 전체 건수를 select해서 조회해옴.
-		int total = bs.total();
+		int total = bs.total(cri);
 		model.addAttribute("paging", new PageVO(cri, total));
 		//board폴더 안에 있는 boardlist.jsp 실행
 		return "board/list";

@@ -14,6 +14,26 @@
 		from (
 				select @rownum:=@rownum+1 rownum, board.* 
 				from board, (select @rownum:=0) as tmp
+				<if test="keyword != null">
+				where title like concat('%',#{keyword},'%')
+
+				  <choose>
+				    <when test="type == 'T'.toString()">
+				      AND title like concat('%',#{keyword},'%')
+				    </when>
+				    <when test="type == 'C'.toString()">
+				      AND content like concat('%',#{keyword},'%')
+				    </when>
+				    <when test="type == 'W'.toString()">
+				      AND id like concat('%',#{keyword},'%')
+				    </when>				    
+				    <otherwise>
+				      AND title like concat('%',#{keyword},'%')
+				      OR content like concat('%',#{keyword},'%')
+				    </otherwise>
+				  </choose>	
+				
+				</if>
 		        order by bno desc
 		) as boardlist
 		<![CDATA[
@@ -38,7 +58,27 @@
 	</delete>
 	
 	<select id="total" resultType="int">
-		select count(*) from board 
+		select count(*) from board
+		<if test="keyword != null">
+		where title like concat('%',#{keyword},'%')
+		
+		  <choose>
+		    <when test="type == 'T'.toString()">
+		      AND title like concat('%',#{keyword},'%')
+		    </when>
+		    <when test="type == 'C'.toString()">
+		      AND content like concat('%',#{keyword},'%')
+		    </when>
+		    <when test="type == 'W'.toString()">
+		      AND id like concat('%',#{keyword},'%')
+		    </when>				    
+		    <otherwise>
+		      AND title like concat('%',#{keyword},'%')
+		      OR content like concat('%',#{keyword},'%')
+		    </otherwise>
+		  </choose>	
+		
+		</if>
 	</select>
 
 </mapper>

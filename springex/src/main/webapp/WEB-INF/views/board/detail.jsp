@@ -13,7 +13,8 @@
 	<tr>
 		<th>제목</th>
 		<td><input type="text" name="title" value="${detail.title}">
-			<input type="hidden" name="bno" value="${detail.bno }"></td>
+			<input type="hidden" name="bno" value="${detail.bno }">
+			|조회수${detail.count}</td>
 	</tr>
 	<tr>
 		<th>내용</th>
