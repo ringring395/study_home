@@ -10,5 +10,9 @@
   		insert into reply(reply, id, bno)   
 		values(#{reply},#{id},#{bno})
   	</insert>	
+  	
+  	<select id="list" resultType="com.ring.model.ReplyVO">
+  		select * from reply where bno=#{bno}
+  	</select>
   
   </mapper>

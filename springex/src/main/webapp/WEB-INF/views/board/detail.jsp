@@ -10,6 +10,7 @@
 </head>
 <body>
 <h2>🥕게시글 상세보기🥕</h2>
+<a href="/board/list"><button>👉게시판 목록으로👈</button></a>
 <form method="post">
 <table border="1">
 	<tr>
@@ -25,7 +26,7 @@
 	<tr>
 		<th>작성일자</th><td>${detail.regdate }</td>
 	</tr>
-	<tr><td colspan="2">
+	<tr><td colspan="2">			
 			<input type="submit" value="수정" formaction="/board/modify">
 			<input type="submit" value="삭제" formaction="/board/delete"></td></tr>	
 </table>
@@ -36,6 +37,10 @@
 	</div>
 	<div>	
 		<input type="button" value="댓글등록" id="add">
+	</div>
+	<div>
+		<table id="replyTable" border="1">
+		</table>
 	</div>
 
 
