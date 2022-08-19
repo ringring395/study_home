@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>detail</title>
+<title>🥕detail</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/resources/js/reply.js"></script>
 </head>
 <body>
-게시글 상세보기
+<h2>🥕게시글 상세보기🥕</h2>
 <form method="post">
 <table border="1">
 	<tr>
@@ -28,5 +30,14 @@
 			<input type="submit" value="삭제" formaction="/board/delete"></td></tr>	
 </table>
 </form>
+	<div><label>댓글</label></div>
+	<div>
+		<textarea rows="10" cols="40" id="reply"></textarea>
+	</div>
+	<div>	
+		<input type="button" value="댓글등록" id="add">
+	</div>
+
+
 </body>
 </html>
