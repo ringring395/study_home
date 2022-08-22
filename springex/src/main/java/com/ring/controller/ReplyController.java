@@ -2,10 +2,13 @@ package com.ring.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +25,11 @@ public class ReplyController {
 	ReplyService rs;
 	//댓글쓰기
 	@RequestMapping(value="/replies/new", method=RequestMethod.POST)
-	public ResponseEntity<String>	replywrite(@RequestBody ReplyVO reply){
-								//return값 넣어줘야 빨간줄 사라짐
+	public ResponseEntity<String>	replywrite(HttpSession session, @RequestBody ReplyVO reply){
+		//로그인한 아이디로 댓글쓰기
+		String id = (String)session.getAttribute("id");
+		reply.setId(id);
+		System.out.println("로그인된아이디 : "+id);
 		//insert가 성공했으면 result변수에 1 저장
 		//insert가 실패했으면 result변수에 0저장
 		int result = rs.rewrite(reply); //다음 MVC패턴 호출
@@ -48,7 +54,9 @@ public class ReplyController {
 	//댓글 수정
 	@ResponseBody
 	@RequestMapping(value="/replies/modify", method=RequestMethod.PUT)
-	public ResponseEntity<String> replymodify(@RequestBody ReplyVO reply){
+	public ResponseEntity<String> replymodify(HttpSession session, @RequestBody ReplyVO reply){
+		String id = (String)session.getAttribute("id");
+
 		System.out.println(reply);
 		//update가 성공했으면 result변수에 1 저장
 		//update가 실패했으면 result변수에 0저장

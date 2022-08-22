@@ -10,12 +10,12 @@ $(document).ready(function(){	//jQuery 준비
 	//detail.jsp가 시작되자마자 댓글목록리스트(list) 함수를  호출
 	list(bnoValue);
 	
-	//댓글 쓰기 버튼을 클릭하면 
+	//댓글 등록 버튼을 클릭하면 
 	$("#add").on("click",function(){
 		//댓글등록 버튼을 클릭했을 때!! : 댓글내용 가져오려면 $("#add").on("click",function(){ 아래에 선언
 		var replyValue = $("#reply").val();
-		var idValue = "hhh888";	//임의로 id입력해둠, 세션값으로 받아오면됨
-
+		
+		var idValue = $("#id").val();	//임의로 id입력해둠, 세션값으로 받아오면됨
 		add({bno:bnoValue,reply:replyValue,id:idValue});	//댓글 쓰기를 하기 위한 함수 호출
 	})
 	
@@ -85,6 +85,7 @@ function modify(reply){
 function list(bno){	//list함수 선언 시작
 	//alert(bno);
 	$.getJSON("/replies/"+bno+".json",function(data){
+		
 		console.log(data)
 		var str="";
 		str+="<tr><th colspan='4'>⭐댓글리스트⭐</th></tr>"

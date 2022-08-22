@@ -53,7 +53,7 @@ public class BoardController {
 	//public String detail(int bno)
 	public String detail(BoardVO board, Model model) {
 		//bs.detail(bno);
-		
+
 		model.addAttribute("detail", bs.detail(board));
 		return "board/detail";
 	}	

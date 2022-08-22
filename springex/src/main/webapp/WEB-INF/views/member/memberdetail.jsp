@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>🐬회원 정보 상세페이지🐬</h1>
+<a href="/board/list"><button>👉게시판 목록으로👈</button></a>
 <form method="post" >
 <table border="1">
 	<tr><th>아이디</th>

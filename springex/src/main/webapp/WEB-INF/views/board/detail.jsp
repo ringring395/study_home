@@ -11,6 +11,7 @@
 <body>
 <h2>🥕게시글 상세보기🥕</h2>
 <a href="/board/list"><button>👉게시판 목록으로👈</button></a>
+
 <form method="post">
 <table border="1">
 	<tr>
