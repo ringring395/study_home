@@ -38,7 +38,7 @@
 	<div>	
 		<input type="button" value="댓글등록" id="add">
 	</div>
-	<div>
+	<div id="chat">
 		<table id="replyTable" border="1">
 		</table>
 	</div>
