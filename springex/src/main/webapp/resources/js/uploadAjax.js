@@ -4,7 +4,7 @@
 
 $(document).ready(function(){
 	
-	/** 4. 첨부파일 공격에 대비하기 위한 업로드 파일 확장자 제한
+	/** 1. 첨부파일 공격에 대비하기 위한 업로드 파일 확장자 제한
 	 * ﻿& 특정 크기 이상의 파일 업로드 제한
 	 */
 	//함수 선언
@@ -41,7 +41,7 @@ $(document).ready(function(){
 		var inputFile = $("input[name='uploadFile']");
 		//console.log(inputFile);
 		var files = inputFile[0].files;
-		console.log(files);
+		//console.log(files);
 		
 		for(var i=0; i<files.length; i++){
 			
@@ -60,7 +60,12 @@ $(document).ready(function(){
 			url:"/uploadAjaxAction",
 			data:formData,
 			contentType:false,
-			processData:false
+			processData:false,
+			dataType:"json",
+			success:function(result){
+				console.log(result)
+
+			}
 		})
 		
 		
