@@ -1,5 +1,7 @@
 package com.ring.model;
 
+import java.util.ArrayList;
+
 public class BoardVO {
 	//MySQL의 board테이블
 	//게시판번호 bno
@@ -14,7 +16,10 @@ public class BoardVO {
 	private int count;
 	//id
 	private String id;
-		
+	
+	//AttachFileVO(파일 업로드 관련 Model), 배열
+	private ArrayList<AttachFileVO> attach;
+			
 	//getter&setter 메소드
 	public int getBno() {
 		return bno;
@@ -52,15 +57,18 @@ public class BoardVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
+	//AttachFileVO의 getter&setter
+	public ArrayList<AttachFileVO> getAttach() {
+		return attach;
+	}
+	public void setAttach(ArrayList<AttachFileVO> attach) {
+		this.attach = attach;
+	}
+	//toString() : AttachFileVO 추가
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", regdate=" + regdate + ", count="
-				+ count + ", id=" + id + "]";
+				+ count + ", id=" + id + ", attach=" + attach + "]";
 	}
-	
-	
-
 	
 }

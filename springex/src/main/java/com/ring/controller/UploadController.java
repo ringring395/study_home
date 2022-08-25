@@ -9,9 +9,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -155,5 +159,50 @@ public class UploadController {
 		
 		return new ResponseEntity<>(list,HttpStatus.OK);
 	}//uploadAjaxPost닫음
+	
+	//이미지 주소 생성
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> getFile(String fileName){
+		System.out.println(fileName);
+		
+		File file = new File("D:\\01-STUDY\\upload\\"+fileName);
+		
+		ResponseEntity<byte[]> result = null;
+		//herder가 content-type 파악할수 있다.
+		HttpHeaders headers = new HttpHeaders(); 
+		try {
+			headers.add("Content-Type", Files.probeContentType(file.toPath()));
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file),
+					headers,HttpStatus.OK);			
+		}catch(Exception e){
+			e.printStackTrace();
+		}		
+		return result;
+	}//getFile 닫음
+	
+	//다운로드 주소 생성
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	public ResponseEntity<Resource> downloadFile(String fileName){
+		
+		Resource resource = new FileSystemResource("D:\\01-STUDY\\upload\\"+fileName);
+		
+		//다운로드 시 파일의 이름을 처리
+		String resourceName = resource.getFilename();
+		
+		HttpHeaders headers = new HttpHeaders(); 
+		try {
+			//다운로드 파일이름이 한글일 때, 깨지지 않게 하기 위한 설정			
+			headers.add("Content-Disposition", "attachment;filename="
+						+new String(resourceName.getBytes("utf-8"),"ISO-8859-1"));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
 	
 }

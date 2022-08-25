@@ -31,6 +31,8 @@ public class BoardController {
 		bs.write(board);
 		return "redirect:/board/list";
 	}
+	
+	
 	//게시판 목록 리스트
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
 	public String list(Model model, CriteriaVO cri) {

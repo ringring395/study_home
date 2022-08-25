@@ -16,6 +16,10 @@
 <div>
 	<input type="submit" id="uploadBtn" value="파일 전송">
 </div>
-
+<div id="uploadResult">
+	<ul>
+		
+	</ul>	
+</div>
 </body>
 </html>

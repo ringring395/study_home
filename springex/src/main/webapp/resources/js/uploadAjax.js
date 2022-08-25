@@ -33,6 +33,7 @@ $(document).ready(function(){
 	
 	// 파일 전송 버튼(id="uploadBtn")을 클릭하면
 	$("#uploadBtn").on("click",function(){
+		//e.preventDefault();	//이벤트 작동x
 		alert("버튼누르면 연결되는지 확인용");
 		//파일 업로드 관련 로직 처리
 		// .jsp의 form태그를 대체(FormData함수)
@@ -64,11 +65,29 @@ $(document).ready(function(){
 			dataType:"json",
 			success:function(result){
 				console.log(result)
-
+				
+				var str=""
+					//향상된 for문 _ 배열타입일때 사용 인덱스i부터 obj배열을 순차진행함.
+				$(result).each(function(i,obj){
+					//console.log(obj)
+					//filePath = 썸네일 파일 경로 + 파일명
+					
+					//만약  obj.image가 true면 아래 실행
+					if(obj.image){
+						var filePath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName)
+						console.log(filePath)
+						//src="/display?fileName='filePath'"
+						str+="<li><img src='/display?fileName="+filePath+"'>"+obj.fileName+"</li>"
+					}					
+					else{	//그렇지 않으면 다운로드 할 수 있도록 실행
+						var filePath = encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName)
+						str+="<li><a href='/download?fileName="+filePath+"'>"+obj.fileName+"</a></li>"
+					}
+					
+				})//$(result).each(function(i,obj)닫음					
+				$("#uploadResult ul").html(str);					
 			}
-		})
-		
-		
+		})//$.ajax닫음
 		
 		
 	})//#uploadBtn닫음
