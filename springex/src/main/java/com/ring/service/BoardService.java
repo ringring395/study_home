@@ -2,11 +2,12 @@ package com.ring.service;
 
 import java.util.ArrayList;
 
+import com.ring.model.AttachFileVO;
 import com.ring.model.BoardVO;
 import com.ring.model.CriteriaVO;
 
 public interface BoardService {
-	//글쓰기 설계
+	//글쓰기 설계		(﻿BoardVO : 게시판정보 + 파일업로드 정보)
 	public void write(BoardVO board);
 	
 	//글 목록 리스트 설계
@@ -23,4 +24,7 @@ public interface BoardService {
 	
 	//board테이블 전체 건수 설계
 	public int total(CriteriaVO cri);
+	
+	//첨부파일 조회 설계
+	public ArrayList<AttachFileVO> attachlist(int bno);
 }

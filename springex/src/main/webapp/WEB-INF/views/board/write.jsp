@@ -10,17 +10,20 @@
 </head>
 <body>
 <h2>✍글쓰기 페이지 입니다.✍</h2>
-<form action="/board/write" method="post">
-제목 : <input type="text" name="title"><br>
-내용 : <input type="text" name="content">
-<input type="button" id="uploadBtn" value="등록"><br>
-<input type="file" name="uploadFile" multiple><br>
-<!-- insert 연결되고 나면, type을 hidden으로 수정하면 된다. --> 
-<input type="text" name="fileName"><br>
-<input type="text" name="uuid"><br>
-<input type="text" name="uploadPath"><br>
-<input type="text" name="image">
-
+<h4>✍글쓰기에 🥕파일 업로드를 연결🥕해봅시다.
+<a href="/board/list"><button>글목록</button></a></h4>
+<form id="form" action="/board/write" method="post">
+	<table border="1">
+		<tr>
+			<th>제목</th>
+			<td><input type="text" name="title"></td></tr>
+		<tr>
+			<th>내용</th>
+			<td><input type="text" name="content"></td></tr>
+		<tr>
+		<th><input type="button" id="uploadBtn" value="등록"></th>
+		<th><input type="file" name="uploadFile" multiple></th></tr>
+	</table>
 </form>
 <div id="uploadResult">
 	<ul>

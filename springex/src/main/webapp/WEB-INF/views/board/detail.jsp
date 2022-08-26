@@ -7,6 +7,7 @@
 <title>🥕detail</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
+<script type="text/javascript" src="/resources/js/attach.js"></script>
 </head>
 <body>
 <h2>🥕게시글 상세보기🥕</h2>
@@ -22,7 +23,8 @@
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td><textarea name="content">${detail.content }</textarea></td>
+		<td><textarea name="content">${detail.content }</textarea>
+		<div id="uploadResult"><table></table></div></td>
 	</tr>
 	<tr>
 		<th>작성일자</th><td>${detail.regdate }</td>
@@ -32,6 +34,7 @@
 			<input type="submit" value="삭제" formaction="/board/delete"></td></tr>	
 </table>
 </form>
+
 	<div><label>댓글</label></div>
 	<div>
 		<textarea rows="10" cols="40" id="reply"></textarea>

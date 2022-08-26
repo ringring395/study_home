@@ -66,12 +66,16 @@ $(document).ready(function(){
 			success:function(result){
 				console.log(result)
 				
-				var str=""
+				var str="";
+				var input="";
 					//향상된 for문 _ 배열타입일때 사용 인덱스i부터 obj배열을 순차진행함.
 				$(result).each(function(i,obj){
 					//console.log(obj)
 					//filePath = 썸네일 파일 경로 + 파일명
-					
+					input+="<input type='text' name='attach["+i+"].fileName' value='"+obj.fileName+"'>";
+					input+="<input type='text' name='attach["+i+"].uuid' value='"+obj.uuid+"'>";
+					input+="<input type='text' name='attach["+i+"].uploadPath' value='"+obj.uploadPath+"'>";
+					input+="<input type='text' name='attach["+i+"].image' value='"+obj.image+"'>";
 					//만약  obj.image가 true면 아래 실행
 					if(obj.image){
 						var filePath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName)
@@ -85,7 +89,8 @@ $(document).ready(function(){
 					}
 					
 				})//$(result).each(function(i,obj)닫음					
-				$("#uploadResult ul").html(str);					
+				$("#uploadResult ul").html(str);
+				$("#form").append(input).submit();
 			}
 		})//$.ajax닫음
 		

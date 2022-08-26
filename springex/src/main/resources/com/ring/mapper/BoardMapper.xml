@@ -5,8 +5,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ring.mapper.BoardMapper">
+<!-- 제목, 내용을 board테이블 insert -->
 	<insert id="write">
-		insert into board(title, content) values (#{title},#{content})
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select max(bno)+1 bno from board;
+		</selectKey>
+		insert into board(bno, title, content, id) 
+		values (#{bno},#{title},#{content}, #{id})
 	</insert>
 	
 	<select id="list" resultType="com.ring.model.BoardVO">
