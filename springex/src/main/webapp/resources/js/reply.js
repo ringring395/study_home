@@ -6,6 +6,8 @@ $(document).ready(function(){	//jQuery 준비
 	//함수 호출
 	//detail.jsp가 시작되자마자 bno값을 가져오려면 $(document).ready아래에 선언
 	var bnoValue = $("input[name='bno']").val();
+
+	var idValue = $("#id").val();	//세션값으로 받아오면됨
 	
 	//detail.jsp가 시작되자마자 댓글목록리스트(list) 함수를  호출
 	list(bnoValue);
@@ -14,8 +16,7 @@ $(document).ready(function(){	//jQuery 준비
 	$("#add").on("click",function(){
 		//댓글등록 버튼을 클릭했을 때!! : 댓글내용 가져오려면 $("#add").on("click",function(){ 아래에 선언
 		var replyValue = $("#reply").val();
-		
-		var idValue = $("#id").val();	//임의로 id입력해둠, 세션값으로 받아오면됨
+
 		add({bno:bnoValue,reply:replyValue,id:idValue});	//댓글 쓰기를 하기 위한 함수 호출
 	})
 	
@@ -27,7 +28,7 @@ $(document).ready(function(){	//jQuery 준비
 		var rno=$(this).data("rno");
 		//var reply=$(this).data("reply");
 		var reply=$("#replycontent"+rno).val();
-		var idValue = $("#id").val();			//같은 id가 쓴 댓글만 수정하려면 id값이 필요함
+
 		//댓글 수정 하기 위한 함수 호출(댓글번호, 댓글내용)
 		modify({rno:rno,reply:reply,id:idValue});
 	})
@@ -36,7 +37,7 @@ $(document).ready(function(){	//jQuery 준비
 	$("#chat").on("click",".remove", function(){
 		//댓글번호만 수집해서
 		var rno = $(this).data("rno");
-		var idValue = $("#id").val();			//같은 id가 쓴 댓글만 삭제하려면 id값이 필요함
+
 		//console.log(rno);
 		//댓글삭제를 하기 위한 함수 호출(댓글번호)
 		//remove({rno:rno}) : JSON타입 
@@ -54,6 +55,9 @@ function remove(rno){
 			if(result=="success"){
 				alert("댓글삭제 성공 'ㅅ' ");				
 			}	
+		},
+		error:function(e){
+			alert("댓글 삭제 실패!!!!!!!!!👽👽👽");
 		}
 	})	
 }
@@ -70,7 +74,10 @@ function modify(reply){
 		success:function(result){
 			if(result=="success"){
 				alert("댓글수정 성공 'ㅅ' ");				
-			}	
+			}
+		},
+		error:function(e){
+			alert("댓글 수정 실패패패퍂패ㅐ");
 		}
 	})
 }
@@ -80,8 +87,7 @@ function modify(reply){
 function list(bno){	//list함수 선언 시작
 	//alert(bno);
 	$.getJSON("/replies/"+bno+".json",function(data){
-		
-		console.log(data)
+		console.log(data);
 		var str="";
 		str+="<tr><th colspan='4'>⭐댓글리스트⭐</th></tr>"
 		str+="<tr><th>id</th><th>댓글내용</th><th colspan='2'>댓글작성일자</th></tr>"
@@ -91,7 +97,8 @@ function list(bno){	//list함수 선언 시작
 			str+="<td>"+data[i].replydate+"</td>"
 			str+="<td><input class='update' type='button' value='수정' data-rno="+data[i].rno+" data-reply='"+data[i].reply+"'>"
 			str+="<input class='remove' type='button' value='삭제' data-rno="+data[i].rno+"></td></tr>"
-		}
+
+		}		
 		$("#replyTable").html(str);
 	});
 }//list함수 선언 끝

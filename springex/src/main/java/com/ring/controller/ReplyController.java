@@ -64,12 +64,8 @@ public class ReplyController {
 					
 			//result가 1이면 HttpStatus.OK
 			//result가 0이면 HttpStatus.INTERNAL_SERVER_ERROR
-//			return result==1? new ResponseEntity<>("success",HttpStatus.OK)
-//							: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 			return result==1? new ResponseEntity<>("success",HttpStatus.OK)
 					: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
-
 	}	
 	
 	//댓글삭제

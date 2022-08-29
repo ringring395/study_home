@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 </head>
 <body>
 <h2>🥕게시글 상세보기🥕</h2>
+<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
 <a href="/"><button>🏠메인으로</button></a>
 <a href="/board/list"><button>👉게시판 목록으로👈</button></a>
 
@@ -23,6 +25,10 @@
 			|조회수${detail.count}</td>
 	</tr>
 	<tr>
+		<th>작성자</th>
+		<td>${detail.id }
+	</tr>
+	<tr>
 		<th>내용</th>
 		<td><textarea rows="10" cols="40" name="content">${detail.content }</textarea>
 		<div id="uploadResult"><table></table></div></td>
@@ -30,9 +36,11 @@
 	<tr>
 		<th>작성일자</th><td>${detail.regdate }</td>
 	</tr>
-	<tr><th colspan="2">			
+	<c:if test="${boardVO.getId()==detail.id }"><!-- if문 시작 -->
+		<tr><th colspan="2">			
 			<input type="submit" value="수정" formaction="/board/modify">
 			<input type="submit" value="삭제" formaction="/board/delete"></th></tr>	
+	</c:if><!-- if문 닫음 -->
 </table>
 </form>
 

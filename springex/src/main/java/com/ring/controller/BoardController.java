@@ -73,12 +73,15 @@ public class BoardController {
 	//게시판 상세 페이지
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
 	//public String detail(int bno)
-	public String detail(BoardVO board, Model model) {
+	public String detail(BoardVO board, HttpSession session, Model model) {
+		String id = (String)session.getAttribute("id");
+		board.setId(id);
 		//bs.detail(bno);
 
 		model.addAttribute("detail", bs.detail(board));
 		return "board/detail";
 	}	
+	
 	//게시판 수정 페이지(update이루어짐)
 	@RequestMapping(value = "/board/modify", method = RequestMethod.POST)
 									//redirect값을 실어서 보내는 변수 선언

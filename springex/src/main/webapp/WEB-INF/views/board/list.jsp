@@ -12,7 +12,18 @@
 </head>
 <body>
 <h1>👻게시판 목록 리스트👻</h1>
+<%
+	if(session.getAttribute("id")!=null){
+%>
+<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
 	<a href="/board/write"><button>글쓰기</button></a>
+<%		
+	}else{
+%>
+	<span>로그인하셔야 상세글 보기 가능합니다.</span>
+<%		
+	}
+%>	
 	<a href="/"><button>🏠메인으로</button></a>
 	<form id="searchForm" action="/board/list">
 		<select name="type">
