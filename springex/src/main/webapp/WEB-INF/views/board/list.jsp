@@ -11,9 +11,9 @@
 <script type="text/javascript" src="/resources/js/list.js"></script>		
 </head>
 <body>
-<h1>게시판 목록 리스트</h1>
-
+<h1>👻게시판 목록 리스트👻</h1>
 	<a href="/board/write"><button>글쓰기</button></a>
+	<a href="/"><button>🏠메인으로</button></a>
 	<form id="searchForm" action="/board/list">
 		<select name="type">
 			<option value="T">제목</option>

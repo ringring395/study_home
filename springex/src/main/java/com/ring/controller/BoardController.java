@@ -53,7 +53,9 @@ public class BoardController {
 	
 	//게시판 목록 리스트
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
-	public String list(Model model, CriteriaVO cri) {
+	public String list(BoardVO board, HttpSession session, Model model, CriteriaVO cri) {
+		String id = (String)session.getAttribute("id");
+		board.setId(id);
 		//boardlist.jsp를 실행할때 select된 결과를 가져와라.
 		//list.jsp의 ${list}로 연결됨
 		model.addAttribute("list", bs.list(cri));

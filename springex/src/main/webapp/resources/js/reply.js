@@ -27,23 +27,21 @@ $(document).ready(function(){	//jQuery 준비
 		var rno=$(this).data("rno");
 		//var reply=$(this).data("reply");
 		var reply=$("#replycontent"+rno).val();
-		
+		var idValue = $("#id").val();			//같은 id가 쓴 댓글만 수정하려면 id값이 필요함
 		//댓글 수정 하기 위한 함수 호출(댓글번호, 댓글내용)
-		modify({rno:rno,reply:reply});
+		modify({rno:rno,reply:reply,id:idValue});
 	})
 	
 	//댓글 삭제버튼을 클릭하면
 	$("#chat").on("click",".remove", function(){
 		//댓글번호만 수집해서
 		var rno = $(this).data("rno");
+		var idValue = $("#id").val();			//같은 id가 쓴 댓글만 삭제하려면 id값이 필요함
 		//console.log(rno);
 		//댓글삭제를 하기 위한 함수 호출(댓글번호)
 		//remove({rno:rno}) : JSON타입 
-		//변수가 하나이므로 아래처럼 변수하나만 호출해도됨
-		remove(rno);
+		remove({rno:rno,id:idValue});
 	})
-	
-	
 })
 
 //함수 선언
@@ -54,13 +52,11 @@ function remove(rno){
 		url:"/replies/remove/"+rno,
 		success:function(result){
 			if(result=="success"){
-				alert("댓글삭제 성공");
-				
+				alert("댓글삭제 성공 'ㅅ' ");				
 			}	
 		}
 	})	
 }
-
 
 function modify(reply){
 	console.log(reply)
@@ -73,10 +69,9 @@ function modify(reply){
 		contentType:"application/json; charset=utf-8",	//입력되는 데이터의 형식
 		success:function(result){
 			if(result=="success"){
-				alert("댓글수정 성공");
-				
+				alert("댓글수정 성공 'ㅅ' ");				
 			}	
-		}	
+		}
 	})
 }
 
@@ -111,10 +106,8 @@ function add(reply){	//add함수 선언 시작
 		contentType:"application/json; charset=utf-8",	//입력되는 데이터의 형식
 		success:function(result){
 			if(result=="success"){
-				alert("댓글쓰기 성공");
-				
-			}
-			
+				alert("댓글쓰기 성공 'ㅅ' ");				
+			}			
 		}
 	})
 }//add 함수 선언 끝

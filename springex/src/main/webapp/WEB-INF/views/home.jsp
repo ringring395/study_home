@@ -13,8 +13,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<a href="/member/login"><button>로그인</button></a>
-<br><br>
-<a href="/board/list"><button>게시판 목록 리스트</button></a>
+<a href="/member/login"><button><h2>🐬로그인🐬</h2></button></a>
+<a href="/board/list"><button><h2>👻게시판 목록 리스트👻</h2></button></a>
 </body>
 </html>

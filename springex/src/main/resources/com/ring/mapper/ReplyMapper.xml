@@ -16,11 +16,14 @@
   	</select>
   	
   	<update id="modify">
-  		update reply set reply=#{reply} where rno=#{rno}
+  		update reply set reply=#{reply} where rno=#{rno} and id=#{id}
   	</update>
   	
   	<delete id="remove">
+  		<where></where>
   		delete from reply where rno=#{rno}
   	</delete>
   
   </mapper>
+  
+  

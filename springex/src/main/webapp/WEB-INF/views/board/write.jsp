@@ -10,8 +10,7 @@
 </head>
 <body>
 <h2>✍글쓰기 페이지 입니다.✍</h2>
-<h4>✍글쓰기에 🥕파일 업로드를 연결🥕해봅시다.
-<a href="/board/list"><button>글목록</button></a></h4>
+<a href="/board/list"><button><h2>👻글목록👻</h2></button></a>
 <form id="form" action="/board/write" method="post">
 	<table border="1">
 		<tr>
@@ -19,7 +18,8 @@
 			<td><input type="text" name="title"></td></tr>
 		<tr>
 			<th>내용</th>
-			<td><input type="text" name="content"></td></tr>
+			<td><textarea rows="10" cols="40" name="content"></textarea>
+			</td></tr>
 		<tr>
 		<th><input type="button" id="uploadBtn" value="등록"></th>
 		<th><input type="file" name="uploadFile" multiple></th></tr>
