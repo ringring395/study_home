@@ -12,6 +12,7 @@
 </head>
 <body>
 <h1>👻게시판 목록 리스트👻</h1>
+<div style="font-size:20px;">
 <%
 	if(session.getAttribute("id")!=null){
 %>
@@ -25,6 +26,7 @@
 	}
 %>	
 	<a href="/"><button>🏠메인으로</button></a>
+</div>	
 	<form id="searchForm" action="/board/list">
 		<select name="type">
 			<option value="T">제목</option>
@@ -32,7 +34,7 @@
 			<option value="TC">제목+내용</option>
 			<option value="W">id(작성자)</option>
 		</select>
-		<input type="text" name="keyword">
+		<input type="text" name="keyword" placeholder="검색어를 입력하세요">
 		<input type="text" name="pageNum" value="${paging.cri.pageNum}">
 		<input type="text" name="amount" value="${paging.cri.amount}">
 		<input type="button" value="검색">
