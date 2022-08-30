@@ -12,10 +12,11 @@
 </head>
 <body>
 <h2>🥕게시글 상세보기🥕</h2>
-<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
-<a href="/"><button>🏠메인으로</button></a>
-<a href="/board/list"><button>👉게시판 목록으로👈</button></a>
-
+<div>
+	<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
+	<a href="/"><button>🏠메인으로</button></a>
+	<a href="/board/list"><button>👉게시판 목록으로👈</button></a>
+</div>
 <form method="post">
 <table border="1">
 	<tr>
@@ -24,10 +25,7 @@
 			<input type="hidden" name="bno" value="${detail.bno }">
 			|조회수${detail.count}</td>
 	</tr>
-	<tr>
-		<th>작성자</th>
-		<td>${detail.id }
-	</tr>
+	<tr><th>작성자</th><td>${detail.id }</tr>
 	<tr>
 		<th>내용</th>
 		<td><textarea rows="10" cols="40" name="content">${detail.content }</textarea>
@@ -43,7 +41,6 @@
 	</c:if><!-- if문 닫음 -->
 </table>
 </form>
-
 	<div><label>댓글</label></div>
 	<div>
 		<textarea rows="4" cols="40" id="reply"></textarea>
@@ -55,7 +52,5 @@
 		<table id="replyTable" border="1">
 		</table>
 	</div>
-
-
 </body>
 </html>
