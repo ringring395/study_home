@@ -63,7 +63,7 @@ public class MemberController {
 		return "member/memberdetail";
 	}
 	//회원 정보 수정
-	@RequestMapping(value = "/member/membermodify", method =RequestMethod.POST)
+	@RequestMapping(value = "/member/modify", method =RequestMethod.POST)
 	public String modify(MemberVO member, RedirectAttributes rttr) {
 		ms.membermodify(member);
 		rttr.addAttribute("id", member.getId());

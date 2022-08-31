@@ -9,13 +9,26 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript" src="/resources/js/attach.js"></script>
+<style type="text/css">
+
+th{
+	background-color:#ffc299;
+}
+#reply22{
+	margin:20px 0;
+}
+</style>
 </head>
 <body>
 <h2>🥕게시글 상세보기🥕</h2>
-<div>
-	<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
-	<a href="/"><button>🏠메인으로</button></a>
-	<a href="/board/list"><button>👉게시판 목록으로👈</button></a>
+<div id="bbtt">
+	<div>
+		<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
+	</div>
+	<div>
+		<a href="/"><button>🏠메인으로</button></a>
+		<a href="/board/list"><button>👉게시판 목록으로👈</button></a>
+	</div>	
 </div>
 <form method="post">
 <table border="1">
@@ -28,7 +41,7 @@
 	<tr><th>작성자</th><td>${detail.id }</tr>
 	<tr>
 		<th>내용</th>
-		<td><textarea rows="10" cols="40" name="content">${detail.content }</textarea>
+		<td><textarea rows="10" cols="55" name="content">${detail.content }</textarea>
 		<div id="uploadResult"><table></table></div></td>
 	</tr>
 	<tr>
@@ -41,12 +54,11 @@
 	</c:if><!-- if문 닫음 -->
 </table>
 </form>
-	<div><label>댓글</label></div>
-	<div>
-		<textarea rows="4" cols="40" id="reply"></textarea>
-	</div>
-	<div>	
-		<input type="button" value="댓글등록" id="add">
+	<div id="reply22">
+		<span>댓글쓰기✍<br></span>
+		<textarea rows="2" cols="65" id="reply"></textarea>
+		<div><input type="button" value="댓글등록" id="add">
+		</div>
 	</div>
 	<div id="chat">
 		<table id="replyTable" border="1">

@@ -14,7 +14,9 @@ input{
 }
 button{
 	width:300px;
-	align:center;
+}
+th{
+	background-color:#cce6ff;
 }
 </style>
 </head>
@@ -34,10 +36,10 @@ button{
 		</tr>
 		<tr><th>name</th><td>${memberdetail.name }</td></tr>
 		<tr><th>age</th><td>${memberdetail.age }</td></tr>
-		<tr><td colspan="2">
+		<tr><th id="cc" colspan="2">
 				<input type="submit" value="정보 수정" formaction="/member/modify">
 				<input type="submit" value="회원 탈퇴" formaction="/member/resign">
-			</td></tr>	
+			</th></tr>	
 	</table>
 </form>
 

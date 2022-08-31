@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>signup</title>
+<style type="text/css">
+input{
+	font-size:150%;
+}
+</style>
 </head>
 <body>
 <h1>🐬회원가입🐬</h1>

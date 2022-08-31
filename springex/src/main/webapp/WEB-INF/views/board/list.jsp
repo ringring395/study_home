@@ -9,6 +9,11 @@
 <title>list</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/list.js"></script>		
+<style type="text/css">
+th{
+	background-color:#cce6ff;
+}
+</style>
 </head>
 <body>
 <h1>👻게시판 목록 리스트👻</h1>
