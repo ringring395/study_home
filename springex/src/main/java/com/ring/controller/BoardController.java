@@ -76,9 +76,14 @@ public class BoardController {
 		String id = (String)session.getAttribute("id");
 		board.setId(id);
 		//bs.detail(bno);
-
 		model.addAttribute("detail", bs.detail(board));
-		return "board/detail";
+		String result = "";
+		if(id != null) {	//로그인된 아이디가 있으면 상세페이지 가고,
+			result = "board/detail";
+		}else {				//로그인된 아이디 없으면 로그인페이지로 가시오.
+			result = "member/login";
+		}
+		return result;
 	}	
 	
 	//게시판 수정 페이지(update이루어짐)
