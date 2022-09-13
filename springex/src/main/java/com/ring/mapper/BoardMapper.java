@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.ring.model.BoardVO;
 import com.ring.model.CriteriaVO;
+import com.ring.model.LikeVO;
 
 public interface BoardMapper {
 	//글쓰기에 해당되는 DB작업 설계
@@ -27,5 +28,11 @@ public interface BoardMapper {
 	
 	//board테이블의 전체 건수를 조회하는 DB작업
 	public int total(CriteriaVO cri);
+	
+	//좋아요 테이블에 해당되는 내용을 조회하는 DB작업 설계
+	public ArrayList<LikeVO> mylike(LikeVO like);
+	
+	//좋아요 카운트를 조절하는 DB작업
+	//public void lcnt(LikeVO like);
 
 }

@@ -86,4 +86,20 @@
 		</if>
 	</select>
 
+	<select id="mylike" resultType="com.ring.model.LikeVO">
+		select * from board where id=#{id}
+	</select>
+
+<!-- 	
+	<update id="lcnt" parameterType="LikeVO">
+		update mylike set lcnt
+		    <if test="mylike == 0">
+		      lcnt = lcnt-1
+		    </if>
+		    <if test="mylike == 1">
+		      lcnt = lcnt+1
+		    </if>
+		where bno=#{bno}
+	</update>
+ -->
 </mapper>

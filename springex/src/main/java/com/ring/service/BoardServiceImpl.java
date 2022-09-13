@@ -11,6 +11,7 @@ import com.ring.mapper.BoardMapper;
 import com.ring.model.AttachFileVO;
 import com.ring.model.BoardVO;
 import com.ring.model.CriteriaVO;
+import com.ring.model.LikeVO;
 
 @Service					
 public class BoardServiceImpl implements BoardService{
@@ -65,5 +66,14 @@ public class BoardServiceImpl implements BoardService{
 	public ArrayList<AttachFileVO> attachlist (int bno){
 		return bam.attachlist(bno);
 	}
+	
+	//좋아요 테이블 전체 내용 조회
+	public ArrayList<LikeVO> mylike(LikeVO like) {
+		//상세페이지 조회할 때
+		// 조회수+1 update
+		//bm.lcnt(like);
+		System.out.println("서비스연결됐냐, like값"+like);
+		return bm.mylike(like);
+	}	
 
 }

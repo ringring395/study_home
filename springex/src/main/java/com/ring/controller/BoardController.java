@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ring.model.AttachFileVO;
 import com.ring.model.BoardVO;
 import com.ring.model.CriteriaVO;
+import com.ring.model.LikeVO;
 import com.ring.model.PageVO;
 import com.ring.service.BoardService;
 
@@ -52,12 +53,16 @@ public class BoardController {
 	
 	//게시판 목록 리스트
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
-	public String list(BoardVO board, HttpSession session, Model model, CriteriaVO cri) {
+	public String list(BoardVO board, LikeVO like, HttpSession session, Model model, CriteriaVO cri) {
 		String id = (String)session.getAttribute("id");
 		board.setId(id);
 		//boardlist.jsp를 실행할때 select된 결과를 가져와라.
 		//list.jsp의 ${list}로 연결됨
 		model.addAttribute("list", bs.list(cri));
+		
+		like.setId(id);
+		model.addAttribute("mylike", bs.mylike(like));
+		System.out.println("콘트롤러연결됐냐, like값"+like);
 		//list.jsp 실행 할때 PageVO에 저장되어 있는 데이터를 가져와라.
 		//					(매개변수가 없는 기본)생성자 호출
 		//list.jsp의 ${paging}으로 연결됨
