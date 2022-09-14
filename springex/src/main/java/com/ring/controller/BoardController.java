@@ -74,6 +74,13 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	//해당 게시물의 좋아요 데이터를 ajax로 전송
+	@RequestMapping(value = "/likelist", method = RequestMethod.POST)
+	public ResponseEntity<ArrayList<LikeVO>> likePost(LikeVO like) {
+		//					통신상태 정상이면 select된 결과를 likePost보내라.
+		return new ResponseEntity<>(bs.mylike(like),HttpStatus.OK);
+	}	
+	
 	//게시판 상세 페이지
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
 	//public String detail(int bno)

@@ -36,11 +36,10 @@
 				      AND title like concat('%',#{keyword},'%')
 				      OR content like concat('%',#{keyword},'%')
 				    </otherwise>
-				  </choose>	
-				
+				  </choose>					
 				</if>
 		        order by bno desc
-		) as boardlist
+		) as boardlist 
 		<![CDATA[
 		where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
 		]]>

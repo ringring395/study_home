@@ -9,6 +9,7 @@
 <title>list</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/list.js"></script>
+<script type="text/javascript" src="/resources/js/likePost.js"></script>
 <style type="text/css">
 th {
 	background-color: #cce6ff;
@@ -27,6 +28,7 @@ img{
 <h1>👻게시판 목록 리스트👻</h1>
 <!-- 로그인하면 글쓰기 버튼 생성 -->
 <div style="font-size: 20px;">
+	<input type="hidden" value="${sessionScope.id}" name="user">
 	<c:choose>
 		<c:when test="${sessionScope.id != null}">
 			<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
@@ -52,12 +54,11 @@ img{
 		type="button" value="검색">
 </form>
 
+
 <table border="1">
 	<tr>
 		<th>번호</th>
-		<c:if test="${sessionScope.id != null}">
-			<th>좋아요</th>
-		</c:if>
+		<th>좋아요</th>
 		<th>제목</th>
 		<th>내용</th>
 		<th>날짜</th>
@@ -66,25 +67,28 @@ img{
 	</tr>
 	<!-- for문 시작 -->
 	<c:forEach items="${list}" var="boardlist">
+			
 		<tr>
 			<td id="bno">${boardlist.bno}</td>
-		<c:if test="${sessionScope.id != null}">
-			<td id="mylikeTd">
+		
+	
+			<td id="mylikeTd">					
+	 			<img id="mylikeImg" src="">
+	 			<input type="hidden" name="likebool" value="bollllll">	 				 			
+			</td>					
 
-			</td>
-		</c:if>
 			<td><a href="/board/detail?bno=${boardlist.bno}">${boardlist.title}</a></td>
 			<td>${boardlist.content}</td>
 			<td>${boardlist.regdate}</td>
 			<td>${boardlist.count}</td>
 			<td>${boardlist.id}</td>
 		</tr>
+		
 	</c:forEach>
-	${mylike }
 	<!-- for문 끝 -->
-
 </table>
 
+${mylike }
 
 <!-- prev(이전)이 true이면 이전버튼 활성화 -->
 <c:if test="${paging.prev}">
