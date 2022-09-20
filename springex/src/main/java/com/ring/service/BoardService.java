@@ -29,6 +29,13 @@ public interface BoardService {
 	//첨부파일 조회 설계
 	public ArrayList<AttachFileVO> attachlist(int bno);
 	
-	//좋아요 전체 테이블 조회 설계
-	public ArrayList<LikeVO> mylike(LikeVO like);
+	//좋아요 클릭여부 체크
+	public ArrayList<LikeVO> likeChk(int bno);
+	
+	//좋아요 등록(꽉찬하트)
+	public int likeUp(LikeVO like);
+	
+	//좋아요 취소(빈하트)
+	public int likeDown(LikeVO like);
+	
 }

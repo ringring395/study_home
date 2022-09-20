@@ -17,6 +17,15 @@ public class BoardVO {
 	//id
 	private String id;
 	
+	//좋아요 갯수
+	private int lcnt;
+	
+	public int getLcnt() {
+		return lcnt;
+	}
+	public void setLcnt(int lcnt) {
+		this.lcnt = lcnt;
+	}
 	//AttachFileVO(파일 업로드 관련 Model), 배열
 	private ArrayList<AttachFileVO> attach;
 			
@@ -64,11 +73,10 @@ public class BoardVO {
 	public void setAttach(ArrayList<AttachFileVO> attach) {
 		this.attach = attach;
 	}
-	//toString() : AttachFileVO 추가
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", regdate=" + regdate + ", count="
-				+ count + ", id=" + id + ", attach=" + attach + "]";
+				+ count + ", id=" + id + ", lcnt=" + lcnt + ", attach=" + attach + "]";
 	}
 	
 }

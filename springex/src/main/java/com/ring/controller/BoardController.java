@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -53,7 +55,9 @@ public class BoardController {
 	
 	//게시판 목록 리스트
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
-	public String list(BoardVO board, LikeVO like, HttpSession session, Model model, CriteriaVO cri) {
+	public String list(BoardVO board, LikeVO like, 
+			HttpSession session, Model model,
+			CriteriaVO cri) {
 		String id = (String)session.getAttribute("id");
 		board.setId(id);
 		//boardlist.jsp를 실행할때 select된 결과를 가져와라.
@@ -61,8 +65,10 @@ public class BoardController {
 		model.addAttribute("list", bs.list(cri));
 		
 		like.setId(id);
-		model.addAttribute("mylike", bs.mylike(like));
+//		model.addAttribute("likeChk", bs.likeChk(bno));
 		System.out.println("콘트롤러연결됐냐, like값"+like);
+		
+		
 		//list.jsp 실행 할때 PageVO에 저장되어 있는 데이터를 가져와라.
 		//					(매개변수가 없는 기본)생성자 호출
 		//list.jsp의 ${paging}으로 연결됨
@@ -74,12 +80,37 @@ public class BoardController {
 		return "board/list";
 	}
 	
-	//해당 게시물의 좋아요 데이터를 ajax로 전송
-	@RequestMapping(value = "/likelist", method = RequestMethod.POST)
-	public ResponseEntity<ArrayList<LikeVO>> likePost(LikeVO like) {
-		//					통신상태 정상이면 select된 결과를 likePost보내라.
-		return new ResponseEntity<>(bs.mylike(like),HttpStatus.OK);
+	//좋아요 클릭 여부
+	@RequestMapping(value = ("/board/likeChk/{bno}"), method=RequestMethod.GET)
+	public ResponseEntity<ArrayList<LikeVO>> likeChk(@PathVariable int bno){
+		bs.likeChk(bno);
+		return new ResponseEntity<>(bs.likeChk(bno), HttpStatus.OK);
+	}
+	
+	//좋아요 등록(꽉찬하트)
+	@RequestMapping(value = ("/board/likeUp"), method=RequestMethod.PUT)
+	public ResponseEntity<String> likeUp(@RequestBody LikeVO like){
+		int result = bs.likeUp(like);
+		System.out.println(like);
+		return result==1? new ResponseEntity<>("success", HttpStatus.OK)
+						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}	
+	
+	//좋아요 취소(빈하트)
+	@RequestMapping(value = ("/board/likeDown"), method=RequestMethod.PUT)
+	public ResponseEntity<String> likeDown(@RequestBody LikeVO like){
+		int result = bs.likeDown(like);
+		System.out.println(like);
+		return result==1? new ResponseEntity<>("success", HttpStatus.OK)
+						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}	
+	
+	//해당 게시물의 좋아요 데이터를 ajax로 전송
+//	@RequestMapping(value = "/likelist", method = RequestMethod.POST)
+//	public ResponseEntity<ArrayList<LikeVO>> likePost(LikeVO like) {
+//		//					통신상태 정상이면 select된 결과를 likePost보내라.
+//		return new ResponseEntity<>(bs.likeChk(like),HttpStatus.OK);
+//	}	
 	
 	//게시판 상세 페이지
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)

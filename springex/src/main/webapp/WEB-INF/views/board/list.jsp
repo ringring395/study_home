@@ -57,38 +57,32 @@ img{
 
 <table border="1">
 	<tr>
-		<th>번호</th>
-		<th>좋아요</th>
+		<th>번호</th>		
 		<th>제목</th>
 		<th>내용</th>
 		<th>날짜</th>
 		<th>조회수</th>
+		<th>좋아요 수</th>
 		<th>id</th>
 	</tr>
 	<!-- for문 시작 -->
 	<c:forEach items="${list}" var="boardlist">
 			
 		<tr>
-			<td id="bno">${boardlist.bno}</td>
-		
-	
-			<td id="mylikeTd">					
-	 			<img id="mylikeImg" src="">
-	 			<input type="hidden" name="likebool" value="bollllll">	 				 			
-			</td>					
-
+			<td>${boardlist.bno}</td>					
 			<td><a href="/board/detail?bno=${boardlist.bno}">${boardlist.title}</a></td>
 			<td>${boardlist.content}</td>
 			<td>${boardlist.regdate}</td>
 			<td>${boardlist.count}</td>
-			<td>${boardlist.id}</td>
+			<td>${boardlist.lcnt }</td>			
+			<td id="idv">${boardlist.id}</td>
 		</tr>
 		
 	</c:forEach>
 	<!-- for문 끝 -->
 </table>
 
-${mylike }
+
 
 <!-- prev(이전)이 true이면 이전버튼 활성화 -->
 <c:if test="${paging.prev}">

@@ -67,13 +67,19 @@ public class BoardServiceImpl implements BoardService{
 		return bam.attachlist(bno);
 	}
 	
-	//좋아요 테이블 전체 내용 조회
-	public ArrayList<LikeVO> mylike(LikeVO like) {
-		//상세페이지 조회할 때
-		// 조회수+1 update
-		//bm.lcnt(like);
-		System.out.println("서비스연결됐냐, like값"+like);
-		return bm.mylike(like);
+	//좋아요 클릭 여부
+	public ArrayList<LikeVO> likeChk(int bno) {
+		return bm.likeChk(bno);
 	}	
+	
+	//좋아요 등록(꽉찬하트)
+	public int likeUp(LikeVO like) {
+		return bm.likeUp(like);
+	}
+	
+	//좋아요 취소(빈하트)
+	public int likeDown(LikeVO like) {
+		return bm.likeDown(like);
+	}
 
 }

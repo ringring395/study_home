@@ -15,7 +15,7 @@
 	</insert>
 	
 	<select id="list" resultType="com.ring.model.BoardVO">
-		select *
+		select *, (select count(*) from mylike where bno=(boardlist.bno)) as lcnt
 		from (
 				select @rownum:=@rownum+1 rownum, board.* 
 				from board, (select @rownum:=0) as tmp
@@ -85,9 +85,18 @@
 		</if>
 	</select>
 
-	<select id="mylike" resultType="com.ring.model.LikeVO">
-		select * from board where id=#{id}
+	<select id="likeChk" resultType="int">
+		select count(*) from mylike where bno=#{param1} and id=#{param2}
 	</select>
+
+	<update id="likeUp">
+		update mylike set lcnt=lcnt+1 where bno=#{bno}
+	</update>
+
+	<update id="likeDown">
+		update mylike set lcnt=lcnt-1 where bno=#{bno}
+	</update>
+
 
 <!-- 	
 	<update id="lcnt" parameterType="LikeVO">

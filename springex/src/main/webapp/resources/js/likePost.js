@@ -4,60 +4,66 @@
 
 $(document).ready(function (){
 	//리스트 페이지 열자마자
-	var userid = $("input[name='user']").val();
-	console.log(userid);
 	
-	var likebool = $("input[name='likebool']").val();
-	console.log(likebool);
+//	var bno = $("#bno").val();
+	var bno = $("input[name='bno']").val();
+	var id = $("input[name='user']").val();
+	var mylike;
 	
-	$("#mylikeImg").attr("src","../../resources/img/mylike_no.png" );
-	$("#mylikeTd").attr("src","../../resources/img/mylike_no.png" );
+	//페이지 시작하자마자 likeChk 호출
+	likeChk(bno);
+	alert(id);
 	
-	$("#mylikeTd").on("click", function(){
-		alert("하트클릭햇냐");
-		
-		if($("#mylikeImg").attr('src') == "../../resources/img/mylike_no.png"){
-			$("#mylikeImg").attr("src","../../resources/img/mylike.png" );
-		}else{
-			$("#mylikeImg").attr("src","../../resources/img/mylike_no.png" );
-		}
-		
+	$("#mylikeBtn").on("click", function(){
+		likeCli({"bno":"bno", "id":"id"});
+		likeChk(bno);
+		alert("눌럿냐");
 	})
 	
+//좋아요 눌렀는지 여부 체크	
+function likeChk(bno){
+	$.getJSON("/board/likeChk/"+bno+".json",function(data){
+		mylike = data;
+		var str="";
+		if(data == 0){
+			str+="<button id='mylikeBtn'>"
+			str+="<img id='mylikeImg' src='../../resources/img/mylike_no.png'>"
+			str+="</button>"	
+		}else{
+			str+="<button id='mylikeBtn'>"
+			str+="<img id='mylikeImg' src='../../resources/img/mylike.png'>"
+			str+="</button>"
+		}
+	})
+}
 	
-	
-//	$("#nolike").on("click", function(){
-//		$("#nolike").hide();
-//		$("#like").show();		//꽉찬하트를 보여주자
-//	})
-//	
-//	
-//	$("#like").on("click",function(){
-//		$("#nolike").show();	//빈하트를 보여주자.
-//		$("#like").hide();
-//	})
-	
-		
-//	//하트 칸 클릭이벤트
-//	$("#mylikeTd").on("click",function(){
-//		if(userid != null){	//로그인된 아이디가 있을때,
-//			if("#nolike"){		//빈하트였으면
-//				$("#nolike").hide();
-//				$("#like").show();		//꽉찬하트를 보여주자
-//				
-//			}else{				//꽉찬하트였으면
-//				$("#nolike").show();	//빈하트를 보여주자.
-//				$("#like").hide();
-//			}
-//					
-//		//로그인된 아이디가 없을때,
-//	}else{
-//		alert("로그인하셔야 찜 가능합니다");
-//		$("#nolike").show();	//빈하트를 보여주자.
-//		$("#like").hide();			
-//				
-//	}//if 닫음
-//	})//클릭이벤트 닫음
- 
+//좋아요 클릭하자
+function likeCli(bno){
+	if(likeChk == 0){
+		$.ajax({
+			type:"put",
+			url: "/board/likeUp",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				if(result == "success"){
+					alert("좋아요");
+					$("#mylikeImg").attr("src","../../resources/img/mylike.png");
+				}
+			}
+		})
+	}else{
+		$.ajax({
+			type:"put",
+			url: "/board/likeDown",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				if(result == "success"){
+					alert("좋아요 취소됨");
+					$("#mylikeImg").attr("src","../../resources/img/mylike_no.png");
+				}
+			}
+		})		
+	}
+}
 
 })

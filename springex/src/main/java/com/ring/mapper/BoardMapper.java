@@ -33,6 +33,11 @@ public interface BoardMapper {
 	public ArrayList<LikeVO> mylike(LikeVO like);
 	
 	//좋아요 카운트를 조절하는 DB작업
-	//public void lcnt(LikeVO like);
-
+	public ArrayList<LikeVO> likeChk(int bno);
+	
+	//좋아요 등록(꽉찬하트)를 위한 DB작업
+	public int likeUp(LikeVO like);
+	
+	//좋아요 취소(빈하트)를 위한 DB작업
+	public int likeDown(LikeVO like);
 }
