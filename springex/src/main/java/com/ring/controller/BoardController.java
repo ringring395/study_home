@@ -81,26 +81,26 @@ public class BoardController {
 	}
 	
 	//좋아요 클릭 여부
-	@RequestMapping(value = ("/board/likeChk/{bno}"), method=RequestMethod.GET)
-	public ResponseEntity<ArrayList<LikeVO>> likeChk(@PathVariable int bno){
-		bs.likeChk(bno);
-		return new ResponseEntity<>(bs.likeChk(bno), HttpStatus.OK);
+	@RequestMapping(value = ("/board/likeChk/{bno}/{id}"), method=RequestMethod.GET)
+	public ResponseEntity<Integer> likeChk(@PathVariable int bno, @PathVariable String id){
+
+		return new ResponseEntity<>(bs.likeChk(bno, id), HttpStatus.OK);
 	}
-	
+
 	//좋아요 등록(꽉찬하트)
-	@RequestMapping(value = ("/board/likeUp"), method=RequestMethod.PUT)
+	@RequestMapping(value = "/board/likeUp", method=RequestMethod.POST)
 	public ResponseEntity<String> likeUp(@RequestBody LikeVO like){
 		int result = bs.likeUp(like);
-		System.out.println(like);
+		
 		return result==1? new ResponseEntity<>("success", HttpStatus.OK)
 						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}	
 	
 	//좋아요 취소(빈하트)
-	@RequestMapping(value = ("/board/likeDown"), method=RequestMethod.PUT)
+	@RequestMapping(value = "/board/likeDown", method=RequestMethod.POST)
 	public ResponseEntity<String> likeDown(@RequestBody LikeVO like){
 		int result = bs.likeDown(like);
-		System.out.println(like);
+		
 		return result==1? new ResponseEntity<>("success", HttpStatus.OK)
 						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}	

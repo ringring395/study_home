@@ -68,8 +68,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	//좋아요 클릭 여부
-	public ArrayList<LikeVO> likeChk(int bno) {
-		return bm.likeChk(bno);
+	public int likeChk(int bno, String id) {
+		return bm.likeChk(bno, id);
 	}	
 	
 	//좋아요 등록(꽉찬하트)

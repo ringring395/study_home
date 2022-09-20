@@ -9,7 +9,6 @@
 <title>list</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/list.js"></script>
-<script type="text/javascript" src="/resources/js/likePost.js"></script>
 <style type="text/css">
 th {
 	background-color: #cce6ff;
@@ -29,6 +28,7 @@ img{
 <!-- 로그인하면 글쓰기 버튼 생성 -->
 <div style="font-size: 20px;">
 	<input type="hidden" value="${sessionScope.id}" name="user">
+	<input type="hidden" value="${boardlist.bno}" name="bno">
 	<c:choose>
 		<c:when test="${sessionScope.id != null}">
 			<a href="/member/memberdetail"><button>${boardVO.getId()}</button></a>님 로그인중입니다.
@@ -75,7 +75,7 @@ img{
 			<td>${boardlist.regdate}</td>
 			<td>${boardlist.count}</td>
 			<td>${boardlist.lcnt }</td>			
-			<td id="idv">${boardlist.id}</td>
+			<td>${boardlist.id}</td>
 		</tr>
 		
 	</c:forEach>

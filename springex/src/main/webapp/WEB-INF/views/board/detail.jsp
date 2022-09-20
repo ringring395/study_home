@@ -10,7 +10,7 @@
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript" src="/resources/js/attach.js"></script>
-<script type="text/javascript" src="/resources/js/likePost.js"></script>
+<script type="text/javascript" src="/resources/js/like.js"></script>
 
 <style type="text/css">
 th {
@@ -22,12 +22,13 @@ th {
 }
 
 #mylikeImg {
-	width: 20px;
+	width: 50px;
 }
 
 #mylikeBtn {
 	background-color: #ffc299;
 }
+
 </style>
 </head>
 <body>
@@ -41,12 +42,13 @@ th {
 			<a href="/"><button>🏠메인으로</button></a> <a href="/board/list"><button>👉게시판
 					목록으로👈</button></a>
 		</div>
+		<div id="mylike">
+			<button id="mylikeBtn">
+				<img id="mylikeImg" src="../../resources/img/mylike_no.png">
+			</button>
+		</div>
 	</div>
-	<div id="mylike">
-		<button id="mylikeBtn">
-			<img id="mylikeImg" src="../../resources/img/mylike_no.png">
-		</button>
-	</div>
+
 	<form method="post">
 		<table border="1">
 			<tr>
@@ -75,8 +77,10 @@ th {
 				<tr>
 					<th colspan="2">
 						<input type="submit" value="수정" formaction="/board/modify"> 
-						<input type="submit" value="삭제" formaction="/board/delete"></th>
+						<input type="submit" value="삭제" formaction="/board/delete">
+					</th>
 				</tr>
+				
 			</c:if>
 			<!-- if문 닫음 -->
 		</table>

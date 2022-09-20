@@ -30,7 +30,7 @@ public interface BoardService {
 	public ArrayList<AttachFileVO> attachlist(int bno);
 	
 	//좋아요 클릭여부 체크
-	public ArrayList<LikeVO> likeChk(int bno);
+	public int likeChk(int bno, String id);
 	
 	//좋아요 등록(꽉찬하트)
 	public int likeUp(LikeVO like);
