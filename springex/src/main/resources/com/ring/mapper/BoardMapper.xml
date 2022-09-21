@@ -90,7 +90,7 @@
 	</select>
 
 	<insert id="likeUp">
-		insert into mylike(lno, bno, id, mylike)
+		insert into mylike(lno, bno, id, heart)
 		values((select * from (select max(lno)+1 from mylike) next), #{bno}, #{id}, 1)
 	</insert>
 

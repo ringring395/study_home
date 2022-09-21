@@ -42,11 +42,7 @@ th {
 			<a href="/"><button>🏠메인으로</button></a> <a href="/board/list"><button>👉게시판
 					목록으로👈</button></a>
 		</div>
-		<div id="mylike">
-			<button id="mylikeBtn">
-				<img id="mylikeImg" src="../../resources/img/mylike_no.png">
-			</button>
-		</div>
+
 	</div>
 
 	<form method="post">
@@ -56,6 +52,13 @@ th {
 				<td><input type="text" name="title" value="${detail.title}">
 					<input type="hidden" name="bno" value="${detail.bno }">
 					|조회수${detail.count}</td>
+				<th rowspan="2">
+					<div id="mylike">
+						<div id="mylikeBtn">
+							<img id="mylikeImg" src="../../resources/img/mylike_no.png">
+						</div>
+					</div>				
+				</th>	
 			</tr>
 			<tr>
 				<th>작성자</th>
@@ -63,14 +66,14 @@ th {
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="55" name="content">${detail.content }</textarea>
+				<td colspan="2"><textarea rows="10" cols="55" name="content">${detail.content }</textarea>
 					<div id="uploadResult">
 						<table></table>
 					</div></td>
 			</tr>
 			<tr>
 				<th>작성일자</th>
-				<td>${detail.regdate }</td>
+				<td colspan="2">${detail.regdate }</td>
 			</tr>
 			<c:if test="${boardVO.getId()==detail.id }">
 				<!-- if문 시작 -->

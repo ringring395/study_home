@@ -32,7 +32,7 @@ public interface BoardMapper {
 	//좋아요 테이블에 해당되는 내용을 조회하는 DB작업 설계
 	public ArrayList<LikeVO> mylike(LikeVO like);
 	
-	//좋아요 카운트를 조절하는 DB작업
+	//좋아요 클릭여부를 체크하는 DB작업
 	public int likeChk(int bno, String id);
 	
 	//좋아요 등록(꽉찬하트)를 위한 DB작업
