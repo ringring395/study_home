@@ -16,13 +16,8 @@ public class mappertest {
 
 	@Test
 	public void testGetTime() {
+		System.out.println("mapperTest");
 		System.out.println(TestMapper.getTime());
-		System.out.println();
 	}
 
-	// 연습용으로 하나 더 불러온것.
-	@Test
-	public void testGetnow() {
-		System.out.println(TestMapper.getnow());
-	}
 }

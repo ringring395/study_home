@@ -2,8 +2,6 @@ package com.ring.dbtest;
 
 import java.sql.Connection;
 
-import javax.sql.DataSource;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
@@ -15,10 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class mybatisTest {
-	@Autowired
-	//DataSource dataSource = new DataSource(); 자바문법
-	private DataSource dataSource;	
-	
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	@Test
