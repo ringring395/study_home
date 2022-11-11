@@ -4,7 +4,7 @@
 $(document).ready(function (){
 
 	
-	$("#y2e_year").on("blur", function(){
+	$("#y2e_btn").on("click", function(){
 		var y2e_year = $("#y2e_year").val();
 		console.log(y2e_year);
 		var y2e_yearChk = /^\d{4}$/;
