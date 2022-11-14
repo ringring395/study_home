@@ -7,7 +7,8 @@ $(document).ready(function (){
 	$("#y2e_btn").on("click", function(){
 		//버튼 클릭하면 일단 리셋
 		$("#e2y_era").val("");
-		$("#e2y_eraNum").val("");		
+		$("#e2y_eraNum").val("");
+		$("#e2y_age").val("");
 		
 		//입력한 년도
 		var y2e_year = $("#y2e_year").val();

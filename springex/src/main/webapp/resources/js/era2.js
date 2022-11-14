@@ -12,6 +12,8 @@ $(document).ready(function (){
 		//버튼 클릭하면 일단 리셋
 		$("#e2d_era").val("");
 		$("#e2d_eraNum").val("");
+		$("#e2d_age").val("");
+		$("#e2d_age2").val("");
 		
 		//입력한 년도
 		var year = $("#d2e_year").val();
