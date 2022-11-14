@@ -25,10 +25,9 @@ $(document).ready(function (){
 	})
 
 //연호 명칭 함수 선언
-	function y2e(y2e_year){
-		console.log(y2e_year);
+	function y2e(year){
+		//기준년도
 		var standard_year;
-		var year = y2e_year;
 		
 		//레이와
 		if(year>2019){
@@ -75,7 +74,11 @@ $(document).ready(function (){
 			$("#e2y_era").val("메이지");
 			standard_year = 1868;
 			era(year, standard_year);	
-		}			
+		}	
+		
+		//나이계산
+		age(year);
+		
 	}//y2e 닫음
 
 	
@@ -89,6 +92,17 @@ function era(year, standard_year){
 			$("#e2y_eraNum").val(num);
 		}
 	}
+}
+
+//나이계산
+function age(year){
+	//날짜 메소드
+	var now = new Date();
+	//현재 년도
+	var now_year = now.getFullYear();
+	//현재 나이 계산
+	var now_age = now_year-year+1;
+	$("#e2y_age").val(now_age);
 }
 	
 

@@ -64,6 +64,11 @@ $(document).ready(function (){
 			standard_year = 1868;
 			era2(year, standard_year);	
 		}
+		
+		//나이계산
+		age2(year); 
+		//만나이계산
+		age2_man(year, month, day);
 	})
 	
 //연호의 햇수를 구하는 함수
@@ -77,5 +82,56 @@ function era2(year, standard_year){
 			}
 		}
 	}
+
+/*
+ * 날짜 메소드
+ * */	
+var now = new Date();	
+//현재 년도
+var now_year = now.getFullYear();
+//현재 월
+var now_month = now.getMonth()+1;
+//현재 일
+var now_day = now.getDate();
+
+
+//나이계산
+function age2(year){
+
+	//현재 나이 계산
+	var now_age = now_year-year+1;
+	$("#e2d_age").val(now_age);
+}	
+
+
+//만나이계산
+function age2_man(year, month, day){
+	console.log(year, month, day);
+	console.log(now_year, now_month, now_day);
+	//만나이 기본 = 한국나이 -1
+	var now_age2_man = now_year-year;
+	
+	//입력한 달이 현재달보다 작으면
+	if(now_month < month){
+		//한국나이보다 -2
+		$("#e2d_age2").val(now_age2_man-1);
+	//입력한 달이 현재달과 같은데다가??
+	}else if(now_month == month){
+		//입력한 날이 현재날보다 같거나 크면
+		if(now_day >= day){
+			//한국나이보다 -1
+			$("#e2d_age2").val(now_age2_man);
+		}else{
+			//아니고, 입력한 날이 현재날보다 작으면
+			//한국나이보다 -2
+			$("#e2d_age2").val(now_age2_man-1);
+		}
+	//입력한 달이 현재달보다 작지않고, 같지 않으면 = 입력한 달이 더 크면
+	}else if(now_month > month){
+		//한국나이 -1
+		$("#e2d_age2").val(now_age2_man);
+	}
+}//age2_man 닫음
+	
 
 })//전체 닫음

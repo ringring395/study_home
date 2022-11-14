@@ -33,7 +33,8 @@
 	
 	<div id="era2year" >
 		<input type="text" id="e2y_era"><br>
-		<input type="text" id="e2y_eraNum">년
+		<input type="text" id="e2y_eraNum">년<br>
+		<input type="text" id="e2y_age">세 (올해)
 	</div>
 </div>
 
@@ -44,12 +45,14 @@
 		<input type="text" id="d2e_year">년<br>
 		<input type="text" id="d2e_month">월<br>		
 		<input type="text" id="d2e_day">일
-		<button id="d2e_btn">✨✨</button>
+		<button id="d2e_btn">🐬🐬</button>
 	</div>
 	<br><br>
 	<div id="era2date">
 		<input type="text" id="e2d_era" value=""><br>
-		<input type="text" id="e2d_eraNum">년
+		<input type="text" id="e2d_eraNum">년<br>
+		<input type="text" id="e2d_age">세 (올해)<br>
+		<input type="text" id="e2d_age2">세 (만)
 	</div>
 </div>
 
