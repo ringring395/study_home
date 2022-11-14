@@ -22,7 +22,7 @@
 <!-- js: era -->
 <div id="only_year" style="background:#dac;width:300px;padding:10px;margin:10px;">
 	<div id="year2era">
-		<p>년도를 입력하세요👇👇👇</p>
+		<h6>년도를 입력하세요👇👇👇</h6>
 		<input type="text" id="y2e_year">년
 		<button id="y2e_btn">✨✨</button><br>
 		<span id="y2e_era"></span>
@@ -40,7 +40,7 @@
 <!-- js: era2 -->
 <div id="full_date" style="background:#fca;width:300px;padding:10px;margin:10px;">
 	<div id="date2era">
-		<p>년월일을 선택하세요 👇👇</p>
+		<h6>년월일을 선택하세요 👇👇</h6>
 		<input type="text" id="d2e_year">년<br>
 		<input type="text" id="d2e_month">월<br>		
 		<input type="text" id="d2e_day">일

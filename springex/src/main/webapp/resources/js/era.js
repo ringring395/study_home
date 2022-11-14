@@ -3,13 +3,21 @@
  */
 $(document).ready(function (){
 
-	
+//버튼을 누르면	
 	$("#y2e_btn").on("click", function(){
+		//버튼 클릭하면 일단 리셋
+		$("#e2y_era").val("");
+		$("#e2y_eraNum").val("");		
+		
+		//입력한 년도
 		var y2e_year = $("#y2e_year").val();
 		console.log(y2e_year);
+		
+		//년도 : 4자리 숫자로 입력
 		var y2e_yearChk = /^\d{4}$/;
 		if(y2e_yearChk.test(y2e_year)){
 			$("#y2e_era").html("");
+			//연호 명칭 함수 호출
 			y2e(y2e_year);
 		}else{
 			$("#y2e_era").html("4자리 숫자만 입력 가능합니다.").css("color","red");
@@ -17,115 +25,72 @@ $(document).ready(function (){
 	})
 
 //연호 명칭 함수 선언
-	function y2e(year){
-		console.log(year);
+	function y2e(y2e_year){
+		console.log(y2e_year);
+		var standard_year;
+		var year = y2e_year;
+		
 		//레이와
 		if(year>2019){
-			$("#y2e_era").html("레이와").css("color","black");
-			rei(year);
+			$("#e2y_era").val("레이와");
+			standard_year = 2019;
+			era(year, standard_year);			
 		}
 		//레이와&헤이세이
 		else if(year==2019){
-			$("#y2e_era").html("레이와1년 / 헤이세이31년").css("color","black");
+			$("#e2y_era").val("레이와1년 / 헤이세이31년");
 		}
 		//헤이세이
 		else if(year>1989 && year<2019){
-			$("#y2e_era").html("헤이세이").css("color","black");
-			hei(year);
+			$("#e2y_era").val("헤이세이");
+			standard_year = 1989;
+			era(year, standard_year);	
 		}	
 		//헤이세이&쇼와
 		else if(year==1989){
-			$("#y2e_era").html("헤이세이1년 / 쇼와64년").css("color","black");
+			$("#e2y_era").val("헤이세이1년 / 쇼와64년");
 		}	
 		//쇼와
 		else if(year>1926 && year<1989){
-			$("#y2e_era").html("쇼와").css("color","black");
-			sho(year);
+			$("#e2y_era").val("쇼와");
+			standard_year = 1926;
+			era(year, standard_year);	
 		}	
 		//쇼와&다이쇼	
 		else if(year==1926){
-			$("#y2e_era").html("쇼와1년 / 다이쇼15년").css("color","black");
+			$("#e2y_era").val("쇼와1년 / 다이쇼15년");
 		}	
 		//다이쇼
 		else if(year>1912 && year<1926){
-			$("#y2e_era").html("다이쇼").css("color","black");
-			dai(year);
+			$("#e2y_era").val("다이쇼");
+			standard_year = 1912;
+			era(year, standard_year);	
 		}	
 		//다이쇼&메이지	
 		else if(year==1912){
-			$("#y2e_era").html("다이쇼1년 / 메이지45년").css("color","black");
+			$("#e2y_era").val("다이쇼1년 / 메이지45년");
 		}	
 		//메이지
 		else if(year>=1868 && year<1912){
-			$("#y2e_era").html("메이지").css("color","black");
-			mei(year);
+			$("#e2y_era").val("메이지");
+			standard_year = 1868;
+			era(year, standard_year);	
 		}			
 	}//y2e 닫음
 
+	
 //연호별 숫자계산 함수 선언
-//레이와 rei
-	function rei(year){
-		var rei_year = 2019;
-		var num = 0;
-		for(rei_year; rei_year<year+1; rei_year++){
-			num++;	
-			if(rei_year == year){
-				$("#y2e_eraNum").html(num).css("color","red");
-			}
+function era(year, standard_year){
+	var num = 0;
+	//기준년도부터 입력한 년도까지 for문 돌림
+	for(standard_year; standard_year<year+1; standard_year++){
+		num++;
+		if(standard_year == year){
+			$("#e2y_eraNum").val(num);
 		}
-	}//rei 닫음
-//헤이세이 hei
-	function hei(year){
-		var hei_year = 1989;
-		var num = 0;
-		for(hei_year; hei_year<year+1; hei_year++){
-			num++;	
-			if(hei_year == year){
-				$("#y2e_eraNum").html(num).css("color","red");
-			}
-		}
-	}//hei 닫음	
-//쇼와 sho
-	function sho(year){
-		var sho_year = 1926;
-		var num = 0;
-		for(sho_year; sho_year<year+1; sho_year++){
-			num++;	
-			if(sho_year == year){
-				$("#y2e_eraNum").html(num).css("color","red");
-			}
-		}
-	}//sho 닫음		
-//다이쇼 dai
-	function dai(year){
-		var dai_year = 1912;
-		var num = 0;
-		for(dai_year; dai_year<year+1; dai_year++){
-			num++;	
-			if(dai_year == year){
-				$("#y2e_eraNum").html(num).css("color","red");
-			}
-		}
-	}//dai 닫음		
-//메이지 mei
-	function mei(year){
-		var mei_year = 1868;
-		var num = 0;
-		for(mei_year; mei_year<year+1; mei_year++){
-			num++;	
-			if(mei_year == year){
-				$("#y2e_eraNum").html(num).css("color","red");
-			}
-		}
-	}//dai 닫음		
+	}
+}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 })//전체 닫음
