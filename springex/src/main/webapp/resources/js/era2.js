@@ -18,7 +18,7 @@ $(document).ready(function (){
 		//입력한 년도
 		var year = $("#d2e_year").val();
 		//입력한 월
-		var month = $("#d2e_month").val();
+		var month = $("#d2e_month option:selected").val();
 		//입력한 일
 		var day = $("#d2e_day").val();	
 		//연호의 첫해 저장변수
