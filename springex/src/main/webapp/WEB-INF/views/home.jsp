@@ -9,7 +9,12 @@
 <script type="text/javascript" src="../../../resources/js/era.js"></script>
 <script type="text/javascript" src="../../../resources/js/era2.js"></script>
 <script type="text/javascript" src="../../../resources/js/era3.js"></script>
-	<title>Home</title>
+<!-- jquery UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>  
+<script type="text/javascript" src="../../../resources/js/datepicker_era.js"></script>
+
+<title>Home</title>
 </head>
 <body>
 <h5>
@@ -20,6 +25,7 @@
 <a href="/member/login"><button><h5>🐬로그인🐬</h5></button></a>
 <a href="/board/list"><button><h5>👻게시판 목록 리스트👻</h5></button></a>
 <br><br>
+
 <!-- js: era -->
 <div id="only_year" style="background:#dac;width:300px;padding:5px;margin:5px;">
 	<div id="y2e">
@@ -37,6 +43,7 @@
 	</div>
 </div>
 
+<div style="display:flex;justify-content:left;">
 <!-- js: era2 -->
 <div id="full_date" style="background:#fca;width:300px;padding:5px;margin:5px;">
 	<div id="d2e">
@@ -60,6 +67,16 @@
 		<input type="text" id="e2d_age">세 (올해)<br>
 		<input type="text" id="e2d_age2">세 (만)
 	</div>
+</div>
+<div id="dp_full_date" style="background:#fca;width:300px;padding:5px;margin:5px;">
+	<h6>datepicker활용</h6>
+	<p>Date: <input type="text" id="dp"></p>
+	<button id="dp_d2e_btn">🟠🟠</button><br>
+	<span id="dp_e2d_era"></span>
+	<span id="dp_e2d_eraNum"></span>
+	<p id="dp_e2d_age"></p>
+	<p id="dp_e2d_age2"></p>
+</div>
 </div>
 
 <!-- js : era3 -->
