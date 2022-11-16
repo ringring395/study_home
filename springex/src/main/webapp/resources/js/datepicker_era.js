@@ -27,8 +27,9 @@ $(document).ready(function (){
 /*
  * 날짜메소드*/	
 	var now = new Date();
-	var now_year = now.getFullYear();	
-	
+	var now_year = now.getFullYear();	//현재 년도
+	var now_month = now.getMonth()+1;	//현재 월	
+	var now_day = now.getDate();		//현재 일
 	
 //버튼 클릭하면
 	$("#dp_d2e_btn").on("click", function(){
@@ -109,6 +110,7 @@ $(document).ready(function (){
 	function dp_age2(dp_year, dp_mmdd){
 		console.log(now_year);
 		var now_age2 = now-year-dp_year;
+		
 		
 	}
 })//전체 닫음
