@@ -30,6 +30,7 @@ $(document).ready(function (){
 	var now_year = now.getFullYear();	//현재 년도
 	var now_month = now.getMonth()+1;	//현재 월	
 	var now_day = now.getDate();		//현재 일
+	var now_mmdd = now_month+now_day
 	
 //버튼 클릭하면
 	$("#dp_d2e_btn").on("click", function(){
@@ -53,7 +54,7 @@ $(document).ready(function (){
 			//연호 함수
 			dp_era(dp_date);
 			//연호 햇수 함수(년도,월,일 필요)
-			dp_eraNum(dp_year, dp_mmdd);
+			dp_eraNum(dp_date);
 			//한국나이(년도만 필요)
 			dp_age(dp_year);
 			//만나이(년도,월,일 필요)
@@ -95,8 +96,13 @@ $(document).ready(function (){
 	
 	
 //연호 햇수 함수(년도, 월, 일 필요)
-	function dp_eraNum(dp_year, dp_mmdd){
+	function dp_eraNum(dp_date){
+		var dp_year = dp_date.substr(0, 4);		//년		
+		var dp_mmdd = dp_date.substr(4, 4);		//월일		
+		
 		console.log(now_year);
+		console.log(dp_date);
+		console.log(dp_mmdd)
 	}
 	
 //한국나이(년도만 필요)
@@ -109,7 +115,7 @@ $(document).ready(function (){
 //만나이(년도, 월, 일 필요)
 	function dp_age2(dp_year, dp_mmdd){
 		console.log(now_year);
-		var now_age2 = now-year-dp_year;
+//		var now_age2 = now-year-dp_year;
 		
 		
 	}
