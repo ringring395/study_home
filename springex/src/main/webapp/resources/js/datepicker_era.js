@@ -102,7 +102,9 @@ $(document).ready(function (){
 		
 		console.log(now_year);
 		console.log(dp_date);
-		console.log(dp_mmdd)
+		console.log(dp_mmdd);
+		console.log(now_month);
+		console.log(now_day);
 	}
 	
 //한국나이(년도만 필요)
