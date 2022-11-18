@@ -71,7 +71,7 @@
 <div id="dp_full_date" style="background:#fca;width:300px;padding:5px;margin:5px;">
 	<h6>datepicker활용</h6>
 	<p>Date: <input type="text" id="dp" readonly></p>
-	<button id="dp_d2e_btn">🟠🟠</button><br>
+	<button id="dp_d2e_btn">📌📌</button><br>
 	<span id="dp_e2d_era"></span>
 	<span id="dp_e2d_eraNum"></span>
 	<p id="dp_e2d_age"></p>
